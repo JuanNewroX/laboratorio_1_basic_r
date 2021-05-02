@@ -1,0 +1,116 @@
+---
+title: "Problema_1"
+author: "JuanRomero"
+date: "29/4/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+
+```{r Carga de archivo}
+
+load("input_data/data.RData")
+
+
+```
+### 1. Que tipo de dato es info_estudiantes
+
+```{r 1. info_estudiantes tipo}
+
+print("Tipo Infor estudiantes")
+
+typeof(info_estudiantes)
+
+print("info estudiante ses una lista")
+
+```
+
+2. Cuantos elementos tiene info_estudiantes
+
+```{r 2. info_estudiantes tipo}
+
+print("Elementos")
+str(info_estudiantes)
+
+```
+
+### 3. Que representa cada uno de los elementos de info_estudiante
+```{r 3. representacion de datos}
+
+min(info_estudiantes$carnet)
+max(info_estudiantes$carnet)
+length(info_estudiantes$carnet[is.na(info_estudiantes$carnet)])
+print("La variable carnet es una lista de 8000 de codigos de estudiantes desde el 2016 a 2019, no contiene datos null/na")
+
+min(info_estudiantes$promedio)
+max(info_estudiantes$promedio)
+length(info_estudiantes$promedio[is.na(info_estudiantes$promedio)])
+print("La variable carnet es una lista de 8000 del promedio de los estudiantes, el valor maximo es de 100 y el menos 40, no contiene datos null/na")
+
+
+table(info_estudiantes$tipo)
+length(info_estudiantes$tipo[is.na(info_estudiantes$tipo)])
+print("La variable carnet es una lista de 8000 categorias o tipos de estudiantes, los tipos estan definidos por A, B, C, D,  no contine datos null/na")
+
+```
+
+### 4. Cual es la media de los estudiantes ingresados en el anho 2019?
+```{r 4. media de estudiantes ingresado 2019}
+mean(info_estudiantes$promedio[as.numeric(info_estudiantes$carnet) >=19000000 & as.numeric(info_estudiantes$carnet) < 20000000])
+
+```
+
+
+###  5. Cual es la suma de desviacion estándar de los estudiantes que ingresaron en el año 2016 y 2018?
+```{r 5. desviacion standar}
+
+sd_2016 <- sd(info_estudiantes$promedio[as.numeric(info_estudiantes$carnet) >=16000000 & as.numeric(info_estudiantes$carnet) < 17000000])
+sd_2018 <- sd(info_estudiantes$promedio[as.numeric(info_estudiantes$carnet) >=18000000 & as.numeric(info_estudiantes$carnet) < 19000000])
+
+sd_sum =  sd_2016 + sd_2018
+
+sd_sum
+```
+
+### 6. Cual es el minimo de notas de aquellos estudiantes donde su carnet termina con los numeros 45 a 48? 
+
+```{r 6. minimo notas}
+
+nota_45_48 <- info_estudiantes$promedio[as.numeric(substr(info_estudiantes$carnet, 7, 8)) >= 45 & as.numeric(substr(info_estudiantes$carnet, 7, 8)) <= 48]
+print("La nota minima de los estudiantes que terminan en 45 a 48 es: ")
+min(nota_45_48)
+
+print("Las 10 notas minimas de los estudiantes que terminan en 45 a 48 son: ")
+unique(nota_45_48[order(nota_45_48)])[0:10]
+
+```
+
+###  7. Cual es la probabilidad de que un estudiante tipo A tenga una nota mayor a 85?
+
+
+```{r 7. probabilidad}
+
+notas_tipo_a <- info_estudiantes$promedio[info_estudiantes$tipo == "A"]
+
+
+probabilidad <- length(notas_tipo_a[notas_tipo_a > 85]) / length(notas_tipo_a)
+
+print(paste("La probabilidad de que un estudiante tipo A saque una nota mayor a 80 es ", probabilidad ))
+
+
+```
+### Cual es la probabilidad de que un estudiante tipo C haya ingresado en el anho 2017 o 2019
+
+```{r 8. probabilidad}
+
+estudiantes_tipo_c <- info_estudiantes$carnet[info_estudiantes$tipo == "C"]
+
+probabilidad <- length(estudiantes_tipo_c[as.numeric(substr(estudiantes_tipo_c,0,2)) == 17 | as.numeric(substr(estudiantes_tipo_c,0,2)) == 19 ]) / length(estudiantes_tipo_c)
+
+print(paste("La probabilidad de que un estudiante tipo C haya ingresado en 2017 o 2019 ", probabilidad ))
+
+```

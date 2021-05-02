@@ -1,0 +1,27 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1619931239408.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "F554F66E",
+    "lastKnownWriteTime" : 1619973951,
+    "last_content_update" : 1619973951071,
+    "path" : "C:/Users/CES-UVG/workspace svn-R/Lab_1_Econometria/Problema_2.Rmd",
+    "project_path" : "Problema_2.Rmd",
+    "properties" : {
+        "cursorPosition" : "115,0",
+        "last_setup_crc32" : "6093D088bb338d19",
+        "scrollLine" : "82",
+        "tempName" : "Untitled1"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

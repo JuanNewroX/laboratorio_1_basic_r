@@ -1,0 +1,137 @@
+---
+title: "Problema_1"
+author: "JuanRomero"
+date: "29/4/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+### 1. Como generaria un arreglo aleatorio de 250 elementos con los colores primarios? 
+
+```{r 1.GeneracionArreglos}
+
+arr.colores <- sample(c("yellow", "red", "blue"), size = 250, replace = T)
+arr.colores
+
+```
+
+### 2. Dado un arreglo de 120000 elementos de números enteros entre 40 y 70, Como haría para obtener la desviación estandar de aquellos números que son mayores a 55 y menores a 64? 
+
+```{r 2. Desviacion estandar}
+
+arr.elementos <- sample(c(40:70), size = 120000, replace = T)
+sd(arr.elementos[arr.elementos  > 55 & arr.elementos < 64])
+
+```
+
+### 3. Suponga que se almacena en una variable un arreglo con todos los números de carnet de los estudiantes del Instituto de Investigacion de Operaciones de la universidad en forma de string, los carnets tiene al inicio dos caracteres que identifican el anho en el que la persona entro a la universidad por ejemplo: 19004528 hacer referencia a una persona que ingreso en el anho 2019, 06009878 hace referencia a una persona que ingreso que el año 2006, Como haria para contar la cantidad de alumnos por ano
+```{r 3. Numeros Carnet anho}
+
+#Construir el array con 5000 estudiantes
+arr.carnets <- sample(c("01000000":"21999999"), size = 500, replace = T)
+arr.carnets[ arr.carnets <  10000000 ] <- paste0("0", arr.carnets[ arr.carnets <  10000000 ])
+
+table(substr(arr.carnets, 0 , 2))
+
+```
+
+### 4. Define el vector y = (1, 3, 5, 7) utilizando la funcion c(). como lo harías con la funcion seq()? 
+```{r 4. Numeros Carnet anho}
+
+arr.secuencia <- seq(1, 7, 2)
+arr.secuencia
+
+```
+### 5. Si b <- list(a=1:10, c="Hola", d="XX"), escriba una expresion en R que devuelva todos los elementos de la lista excepto los  elementos 4,6,6,7 del vector a.
+```{r 5. Elementos lista excepto}
+b <- list(a=1:10, c="Hola", d="XX")
+
+b$c[b$a < 4 &  b$a > 7]
+b$d[b$a < 4 &  b$a > 7]
+
+
+```
+### 6. Dado los siguientes vectores, muestre el codigo en R necesario para declarar y calcular el promedio, deviacion estandar, mediana, moda y sumatoria total para los siguientes vectores
+```{r 6. calcular promedio}
+x = c(8, 7, 6, 5)
+y = c(3, 3, 3, 3, 3, 3, 3, 3, 2, 2, 4) 
+z = c(1, 1.75, 2.5, 3.5, 4)
+
+sumx <- sum(x)
+sumy <- sum(y)
+sumz <- sum(z)
+
+meanx <- mean(x)
+meany <- mean(y)
+meanz <- mean(z)
+
+sdx <- sd(x)
+sdy <- sd(y)
+sdz <- sd(z)
+
+medianx <- median(x)
+mediany <- median(y)
+medianz <- median(z)
+
+modax <- as.numeric(names(which.max(table(x))))
+moday <- as.numeric(names(which.max(table(y))))
+modaz <- as.numeric(names(which.max(table(z))))
+
+print(paste("Promedio ", meanx, meany, meanz ))
+print(paste("Desviacion standar ", sdx, sdy, sdz ))
+print(paste("Mediana ", medianx, mediany, medianz ))
+print(paste("Moda ", modax, moday, modaz ))
+print(paste("Sumatoria ", sumx, sumy, sumz ))
+
+print("Resumen x")
+summary(sumx)
+print("Resumen y")
+summary(sumy)
+print("Resumen z")
+summary(sumz)
+
+
+```
+### 7. Sabemos que para sumar vectores estos deben tener la misma longitud. Sin embargo R trabaja de manera distinta. Defina los vectores x = (1, 2, 3, 4, 5, 6), y = (7, 8), z = (9, 10, 11, 12). Calcula:
+
+```{r 7. Suma Vectores}
+x <- c(1,2,3,4,5,6)
+y <- c(7, 8)
+z <- c(9, 10, 11, 12)
+
+sumxx <- x + x
+sumxy <- x + y
+sumxz <- x + z
+
+sumxx
+sumxy
+sumxz
+
+
+```
+### 8. Dada la variable string <- "Hola Mundo", escriba una instrucción en R que devuelva la siguiente salida: 
+
+```{r 8. Variables string}
+string <- "Hola Mundo"
+
+substr(string, 0, 4)
+
+substr(string, 6, 10)
+
+```
+
+
+
+
+
+
+
+
+
+
+
+

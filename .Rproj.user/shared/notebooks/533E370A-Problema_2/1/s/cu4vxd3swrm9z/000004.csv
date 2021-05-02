@@ -1,0 +1,6 @@
+"0","mean(info_estudiantes$promedio[as.numeric(info_estudiantes$carnet) >=19000000 & as.numeric(info_estudiantes$carnet) < 20000000])
+"
+"1","[1]"
+"1"," 70.85942"
+"1","
+"
